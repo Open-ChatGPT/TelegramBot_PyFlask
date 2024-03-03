@@ -27,3 +27,9 @@
 git clone https://github.com/Open-ChatGPT/TelegramBot_PyFlask.git
 cd TelegramBot_PyFlask
 
+安装必要的Python依赖：
+
+```bash
+pip install -r requirements.txt
+
+
