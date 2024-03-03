@@ -1,4 +1,5 @@
 Flask
+logging
 python-telegram-bot
 python-dotenv
 mysql-connector-python
