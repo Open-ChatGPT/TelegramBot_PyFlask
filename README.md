@@ -58,3 +58,20 @@ python main.py
 - 发送任意文本消息给机器人，它将会回显消息。
 - 访问http://localhost:5000/以测试Flask应用的根路径。
 - 发送POST请求到http://localhost:5000/webhook以测试Webhook接收。
+
+### 项目目录结构
+```bash
+TelegramBot_PyFlask/
+│
+├── main.py - 主程序入口，负责初始化和启动Telegram机器人和Flask应用。
+│
+├── TelegramBot.py - 定义了Telegram机器人的行为和命令处理。
+│
+├── MySQL.py - 处理数据库连接和操作的模块。
+│
+├── Api.py - 定义了Flask应用的路由和视图函数。
+│
+├── .env - 存储环境变量，如数据库配置和Telegram机器人的Token。
+│
+└── requirements.txt - 列出了所有Python依赖项，用于项目的安装。
+```
