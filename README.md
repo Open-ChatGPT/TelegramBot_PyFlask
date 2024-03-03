@@ -53,8 +53,8 @@ FLASK_DEBUG=True
 python main.py
 ```
 ### 使用说明
-	•	发送/start或/help命令给Telegram机器人以测试基本功能。
-	•	发送任意文本消息给机器人，它将会回显消息。
-	•	访问http://localhost:5000/以测试Flask应用的根路径。
-	•	发送POST请求到http://localhost:5000/webhook以测试Webhook接收。
 
+- 发送/start或/help命令给Telegram机器人以测试基本功能。
+- 发送任意文本消息给机器人，它将会回显消息。
+- 访问http://localhost:5000/以测试Flask应用的根路径。
+- 发送POST请求到http://localhost:5000/webhook以测试Webhook接收。
