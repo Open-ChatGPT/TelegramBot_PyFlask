@@ -21,13 +21,13 @@
 
 ### 安装
 
-####首先，克隆仓库到本地机器：
+#### 首先，克隆仓库到本地机器：
 
 ```bash
 git clone https://github.com/Open-ChatGPT/TelegramBot_PyFlask.git
 cd TelegramBot_PyFlask
 
-####安装python必要依赖：
+#### 安装python必要依赖：
 
 ```bash
 pip install -r requirements.txt
