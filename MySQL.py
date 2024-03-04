@@ -1,4 +1,4 @@
-# MySQL.py
+ # MySQL.py
 import mysql.connector
 import os
 
@@ -64,7 +64,8 @@ def delete_group_url(group_id, url):
             cursor.execute("DELETE FROM db_chat WHERE groupid=%s AND url=%s", (group_id, url))
             db_connection.commit()
     except mysql.connector.Error as err:
-        print(f"删除URL时发生错误: {err}")n False
+        print(f"删除URL时发生错误: {err}")
+        return False
         
 def query_db_chat_data(query_value, query_type='group_id'):
     """
