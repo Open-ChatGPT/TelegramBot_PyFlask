@@ -1,6 +1,6 @@
 # Api.py
 from flask import Flask, request, jsonify
-from MySQL import query_chat_data
+import MySQL
 #MySQL.py位于同一目录下，
 #MySQL.py中名为query_db_by_group的函数
 #@app.route('/')
