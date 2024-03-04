@@ -9,6 +9,7 @@ db_connection = mysql.connector.connect(
     database=os.getenv('MYSQL_DATABASE')
 )
 
+
 def insert_group_message(group_id, group_name, user_id, user_name, message_text):
     try:
         with db_connection.cursor() as cursor:
@@ -64,3 +65,29 @@ def delete_group_url(group_id, url):
             db_connection.commit()
     except mysql.connector.Error as err:
         print(f"删除URL时发生错误: {err}")n False
+        
+def query_db_by_group(query_value, query_type='group_id'):
+    """
+    根据 group_id 或 name 查询数据库中的数据。
+    
+    参数:
+    - query_value: 要查询的值。
+    - query_type: 查询类型（'group_id' 或 'name'）。
+    
+    返回:
+    - 查询结果列表，如果没有找到匹配的记录，则为空列表。
+    """
+    try:
+        # 根据查询类型构造SQL查询语句
+        if query_type == 'group_id':
+            query = "SELECT * FROM db_chat WHERE groupid = %s"
+        elif query_type == 'name':
+            query = "SELECT * FROM db_chat WHERE name = %s"
+        else:
+            raise ValueError("未知的查询类型")
+        
+        # 执行查询
+        cursor.execute(query, (query_value,))
+        results = cursor.fetchall()
+        
+        return results
