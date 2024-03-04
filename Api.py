@@ -1,6 +1,6 @@
 # Api.py
 from flask import Flask, request, jsonify
-from MySQL import query_db_by_group
+from MySQL import query_chat_data
 #MySQL.py位于同一目录下，
 #MySQL.py中名为query_db_by_group的函数
 @app.route('/')
@@ -22,8 +22,8 @@ def webhook():
         query_value = data['name']
         query_type = 'name'
     
-    # 调用 query_db_by_group 执行数据库查询
-    results = query_db_by_group(query_value, query_type)
+    # 调用 query_chat_data 执行数据库查询
+    results = query_chat_data(query_value, query_type)
     print(results)
     if not results:
         return jsonify({'message': '数据为空'}), 404
