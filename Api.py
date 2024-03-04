@@ -3,11 +3,11 @@ from flask import Flask, request, jsonify
 from MySQL import query_chat_data
 #MySQL.py位于同一目录下，
 #MySQL.py中名为query_db_by_group的函数
-@app.route('/')
+#@app.route('/')
 def home():
     return "Hello, World!"
     
-@app.route('/webhook', methods=['POST'])
+#@app.route('/webhook', methods=['POST'])
 def webhook():
     data = request.json
     # 检查是否至少有一个参数存在
