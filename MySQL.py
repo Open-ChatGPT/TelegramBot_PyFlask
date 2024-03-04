@@ -66,7 +66,7 @@ def delete_group_url(group_id, url):
     except mysql.connector.Error as err:
         print(f"删除URL时发生错误: {err}")n False
         
-def query_db_by_group(query_value, query_type='group_id'):
+def query_db_chat_data(query_value, query_type='group_id'):
     """
     根据 group_id 或 name 查询数据库中的数据。
     
