@@ -66,6 +66,37 @@ def delete_group_url(group_id, url):
     except mysql.connector.Error as err:
         print(f"删除URL时发生错误: {err}")n False
         
+# 定义一个函数，根据group_id或name查询db_chat表中的数据
+def query_db_chat_data(query_value, query_type='group_id'):
+    """
+    根据 group_id 或 name 查询数据库中的数据。
+    
+    参数:
+    - query_value: 要查询的值。
+    - query_type: 查询类型（'group_id' 或 'name'）。
+    
+    返回:
+    - 查询结果列表，如果没有找到匹配的记录，则为空列表。
+    """
+    try:
+        with db_connection.cursor() as cursor:
+            # 根据查询类型构造不同的SQL查询语句
+            if query_type == 'group_id':
+                query = "SELECT * FROM db_chat WHERE groupid = %s"
+            elif query_type == 'name':
+                query = "SELECT * FROM db_chat WHERE name = %s"
+            else:
+                raise ValueError("未知的查询类型")
+            # 执行查询，并传入相应的查询值
+        cursor.execute(query, (query_value,))
+        # 获取所有查询结果并返回
+        results = cursor.fetchall()
+        return results
+except mysql.connector.Error as err:
+    print(f"数据库查询错误: {err}")
+    return []
+                
+                
 def query_db_chat_data(query_value, query_type='group_id'):
     """
     根据 group_id 或 name 查询数据库中的数据。
