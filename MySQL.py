@@ -21,17 +21,6 @@ def insert_group_message(group_id, group_name, user_id, user_name, message_text)
     except mysql.connector.Error as err:
         print("Error inserting group message: {}".format(err))
 
-import mysql.connector
-import os
-
-# 建立数据库连接
-db_connection = mysql.connector.connect(
-    host=os.getenv('MYSQL_HOST'),  # 数据库主机地址
-    user=os.getenv('MYSQL_USER'),  # 数据库用户名
-    password=os.getenv('MYSQL_PASSWORD'),  # 数据库密码
-    database=os.getenv('MYSQL_DATABASE')  # 数据库名称
-)
-
 # 检查特定群组中的URL是否存在
 def check_url_exists(group_id, url):
     """检查URL是否已存在于特定群组中"""
