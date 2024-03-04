@@ -10,14 +10,23 @@ def home():
 @app.route('/webhook', methods=['POST'])
 def webhook():
     data = request.json
-    if not data or 'group' not in data:
-        return jsonify({'error': 'Missing or invalid parameter: group'}), 400
+    # 检查是否至少有一个参数存在
+    if not data or ('group_id' not in data and 'name' not in data):
+        return jsonify({'error': '必须附带group_id或者name字段值'}), 400
 
-    group = data['group']
-    results = query_db_by_group(group)
+    # 根据接收到的参数选择查询类型
+    if 'group_id' in data:
+        query_value = data['group_id']
+        query_type = 'group_id'
+    else:
+        query_value = data['name']
+        query_type = 'name'
+    
+    # 调用 query_db_by_group 执行数据库查询
+    results = query_db_by_group(query_value, query_type)
     print(results)
     if not results:
-        return jsonify({'message': 'Data is empty'}), 404
+        return jsonify({'message': '数据为空'}), 404
     return jsonify({'data': results}), 200
     
 def setup_routes(app):
