@@ -9,12 +9,14 @@ db_connection = mysql.connector.connect(
     database=os.getenv('MYSQL_DATABASE')
 )
 
-def insert_command_usage(user_id, command):
-    cursor = db_connection.cursor()
+def insert_group_message(group_id, group_name, user_id, user_name, message_text):
     try:
-        cursor.execute("INSERT INTO command_usage (user_id, command) VALUES (%s, %s)", (user_id, command))
+        with db_connection.cursor() as cursor:
+            query = """
+            INSERT INTO group_messages (group_id, group_name, user_id, user_name, message_text) 
+            VALUES (%s, %s, %s, %s, %s)
+            """
+            cursor.execute(query, (group_id, group_name, user_id, user_name, message_text))
         db_connection.commit()
     except mysql.connector.Error as err:
-        print("Something went wrong: {}".format(err))
-    finally:
-        cursor.close()
+        print("Error inserting group message: {}".format(err))
